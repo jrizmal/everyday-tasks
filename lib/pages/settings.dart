@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tasks/components/custom_button.dart';
 
 class SettingsPage extends StatefulWidget {
   SettingsPage({Key key}) : super(key: key);
@@ -13,11 +14,16 @@ class _SettingsPageState extends State<SettingsPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text("Settings"),
-        
       ),
       body: Center(
-        child: Text("Settings"),
+        child: CustomButton(
+          text: "Give notification",
+          onPressed: () {
+          },
+        ),
       ),
     );
   }
+
+  
 }
