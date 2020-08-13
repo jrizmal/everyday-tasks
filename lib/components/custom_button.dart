@@ -5,7 +5,7 @@ class CustomButton extends StatelessWidget {
   final String text;
   final double sidePadding;
 
-  CustomButton({this.onPressed, this.text, this.sidePadding:50});
+  CustomButton({this.onPressed, this.text, this.sidePadding: 50});
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +13,10 @@ class CustomButton extends StatelessWidget {
       child: Text(
         text,
         style: TextStyle(
-            color: Colors.white, fontWeight: FontWeight.w700, fontSize: 16),
+          color: Colors.white,
+          fontWeight: FontWeight.w700,
+          fontSize: 16,
+        ),
       ),
       onPressed: onPressed,
       color: Colors.orange[600],

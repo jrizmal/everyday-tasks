@@ -10,6 +10,7 @@ class TaskListItem extends StatefulWidget {
 }
 
 class _TaskListItemState extends State<TaskListItem> {
+  bool _checked = false;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -22,8 +23,24 @@ class _TaskListItemState extends State<TaskListItem> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
-            Text(widget.task.title),
-            Text(_getStatus(widget.task)),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Text(
+                  widget.task.title,
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
+                Text(_getStatus(widget.task)),
+              ],
+            ),
+            Checkbox(
+              value: _checked,
+              onChanged: (value) {
+                setState(() {
+                  _checked = value;
+                });
+              },
+            ),
           ],
         ),
       ),
@@ -32,19 +49,22 @@ class _TaskListItemState extends State<TaskListItem> {
 
   String _getStatus(Task t) {
     int interval = t.interval;
+    String msg =
+        interval.toString() + (interval == 1 ? " day" : " days") + " in a row ";
+    String emoji = "";
 
     if (interval <= 1) {
-      return "Keep it up ❤";
+      emoji = "❤";
     }
 
     if (interval <= 4) {
-      return "Looking good 👌";
+      emoji = "👌";
     }
 
     if (interval == 7) {
-      return "That's a week! 🎉";
+      emoji = "🎉";
     }
 
-    return "Going strong 🔥";
+    return msg + emoji;
   }
 }
